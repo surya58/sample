@@ -1,8 +1,8 @@
 namespace ApiService.Product.Commands;
 
 using MediatR;
-using Data;
-using Models;
+using ApiService.Data;
+using ApiService.Product.Models;
 
 public record CreateProductCommand(string Name, string Sku, int Quantity, decimal Price, ProductStatus Status, string? Description, int? CategoryId = null) : IRequest<int>;
 

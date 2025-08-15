@@ -16,7 +16,9 @@ import { ProductStatus } from '../../../../types/api';
 export const productInventoryApi = createApi({
   reducerPath: 'productInventoryApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: '/api/',
+    baseUrl: process.env.NODE_ENV === 'development' 
+      ? 'http://localhost:5518/api/' 
+      : '/api/',
     prepareHeaders: (headers) => {
       headers.set('Content-Type', 'application/json');
       return headers;
