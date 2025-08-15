@@ -4,12 +4,15 @@ import type { Action, ThunkAction } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './root-reducer';
 import { emptySplitApi } from './api';
+import { productInventoryApi } from './api/productInventoryApi';
 
 export const store = configureStore({
   reducer: rootReducer,
   devTools: true,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(emptySplitApi.middleware)
+    getDefaultMiddleware()
+      .concat(emptySplitApi.middleware)
+      .concat(productInventoryApi.middleware)
 });
 
 export type RootState = ReturnType<typeof store.getState>;

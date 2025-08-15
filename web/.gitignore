@@ -10,6 +10,19 @@
 !.yarn/releases
 !.yarn/versions
 
+# npm (ignore since we're using pnpm)
+package-lock.json
+npm-debug.log*
+
+# yarn (ignore since we're using pnpm)
+yarn-debug.log*
+yarn-error.log*
+yarn.lock
+
+# pnpm (track pnpm-lock.yaml but ignore debug logs)
+.pnpm-debug.log*
+# pnpm-lock.yaml should be committed
+
 # testing
 /coverage
 
@@ -25,9 +38,6 @@
 *.pem
 
 # debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 .pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)

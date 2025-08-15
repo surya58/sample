@@ -1,16 +1,20 @@
 import type { ConfigFile } from '@rtk-query/codegen-openapi'
 
 const config: ConfigFile = {
-  schemaFile: '../PythonApi/openapi.json',
+  schemaFile: '../ApiService/ProductInventory.Api.json',
   apiFile: './src/store/api/empty-api.ts',
   apiImport: 'emptySplitApi',
   outputFiles: {
-    './src/store/api/generated/todos.ts': {
-      filterEndpoints: [/Todo/]
+    './src/store/api/generated/products.ts': {
+      filterEndpoints: [/Product/]
+    },
+    './src/store/api/generated/categories.ts': {
+      filterEndpoints: [/ProductCategor/]
     },
   },
-  exportName: 'moviesApi',
+  exportName: 'productInventoryApi',
   hooks: true,
+  tag: true,
 }
 
 export default config
