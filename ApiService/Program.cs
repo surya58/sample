@@ -18,15 +18,15 @@ builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 });
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddDbContext<ApiService.Data.TodoDbContext>(options =>
+builder.Services.AddDbContext<ApiService.Data.ProductDbContext>(options =>
 {
-    options.UseInMemoryDatabase("TodoDb");
+    options.UseInMemoryDatabase("ProductInventoryDb");
 });
 
 builder.Services.AddOpenApiDocument(options =>
 {
     options.DocumentName = "v1";
-    options.Title = "Movies API";
+    options.Title = "Product Inventory API";
     options.Version = "v1";
     options.UseHttpAttributeNameAsOperationId = true;
     
@@ -37,6 +37,13 @@ builder.Services.AddOpenApiDocument(options =>
 });
 
 var app = builder.Build();
+
+// Seed data
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApiService.Data.ProductDbContext>();
+    await ApiService.Data.DataSeeder.SeedDataAsync(context);
+}
 
 // Configure the HTTP request pipeline.
 app.UseExceptionHandler();
