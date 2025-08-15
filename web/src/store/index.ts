@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import type { Action, ThunkAction } from '@reduxjs/toolkit';
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './root-reducer';
-import { emptySplitApi } from './api';
 import { productInventoryApi } from './api/productInventoryApi';
 
 export const store = configureStore({
@@ -11,7 +10,6 @@ export const store = configureStore({
   devTools: true,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
-      .concat(emptySplitApi.middleware)
       .concat(productInventoryApi.middleware)
 });
 

@@ -2,10 +2,10 @@ namespace ApiService.Controllers;
 
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Product.Commands;
-using Product.Queries;
-using Product.DTO;
-using Product.Models;
+using ApiService.Product.Commands;
+using ApiService.Product.Queries;
+using ApiService.Product.DTO;
+using ApiService.Product.Models;
 
 [ApiController]
 [Route("api/[controller]")]

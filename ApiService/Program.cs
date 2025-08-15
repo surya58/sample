@@ -22,6 +22,10 @@ builder.Services.AddDbContext<ApiService.Data.ProductDbContext>(options =>
 {
     options.UseInMemoryDatabase("ProductInventoryDb");
 });
+builder.Services.AddDbContext<ApiService.Data.TodoDbContext>(options =>
+{
+    options.UseInMemoryDatabase("TodoDb");
+});
 
 builder.Services.AddOpenApiDocument(options =>
 {
